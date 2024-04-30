@@ -1,17 +1,36 @@
 #include <stdio.h>
 
-int main(void) {
+void swap(int* arr, int i, int j)
+{
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
 
-    int x[] = {1, 2, 3, 20, 539};
+void bubbleSort(int arr[], int n)
+{
+    int i, j;
+    for (i = 0; i < n - 1; i++)
+
+        for (j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+                swap(arr, j, j + 1);
+}
+
+void printArray(int arr[], int size)
+{
     int i;
+    for (i = 0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
 
-    int length = sizeof(x) / sizeof(x[0]);
-
-    printf("laenge des arrays: %d elemente\n", length);
-
-    for (i = 0; i < length; i++) {
-        printf("%i\n", x[i]);
-    }
-
+int main()
+{
+    int arr[] = { 3, 6, 2, 4, 1 };
+    int N = sizeof(arr) / sizeof(arr[0]);
+    bubbleSort(arr, N);
+    printf("Sortierter Array: ");
+    printArray(arr, N);
     return 0;
 }
